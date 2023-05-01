@@ -1,0 +1,47 @@
+import React from 'react';
+import {Row,Col , Form , Input} from 'antd'
+import {Link} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import {userLogin} from '../redux/actions/userActions'
+function Login() {
+  const dispatch=useDispatch()
+  function onFinish(values){
+    dispatch(userLogin(values))
+    console.log(values)
+  }
+    return(
+      <div className='login'>
+        <Row gutter={16} className='d-flex align-items-center'>
+          <Col lg={16}  style={{position:'relative'}}>
+            <img src="https://i.pinimg.com/474x/9e/e6/50/9ee650f45077dc17e7db0ae59f052cc8.jpg"/>
+          </Col>
+          <Col lg={8} className='text-left p-5' >
+            <Form layout='vertical' className='login-form p-5' onFinish={onFinish}>
+              <h1> Login</h1>
+              <hr/>
+              <Form.Item name='username' label='username' rules={[{required:true}]}>
+                <Input/>
+
+              </Form.Item>
+              <Form.Item name='password' label='password' rules={[{required:true}]}>
+                <Input/>
+
+              </Form.Item>
+              <button className='btn1 mt-2 mb-2'>Login</button>
+              <br/>
+
+              <Link to='/register'> Click Here to Register</Link>
+
+            </Form>
+          </Col>
+        </Row>
+ 
+      </div>
+    )
+    
+  
+}
+  
+
+export default Login;
